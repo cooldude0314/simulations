@@ -13,7 +13,7 @@ while running:
     def show_flip(side, root, canvas):
         canvas.delete("all")
         root.update()
-        time.sleep(0.1)
+        time.sleep(0.1)# Pause for a brief moment so the user can see that the coin flips again if it lands on the same side
         root.title("Coin Flip Result")
 
         if side == "Heads":
