@@ -24,4 +24,4 @@ while running:
 
 print("Rolling complete.")
 
-print("Daddy rules")
+print("Daddy is dumb")
