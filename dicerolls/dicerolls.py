@@ -21,5 +21,4 @@ while running:
     cont = input("Press enter to roll again, type 'exit' to stop: ").strip().lower()
     if cont == 'exit':
         running = False
-
 print("Rolling complete.")
