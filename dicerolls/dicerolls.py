@@ -23,3 +23,5 @@ while running:
         running = False
 
 print("Rolling complete.")
+
+print("Daddy rules")
