@@ -13,7 +13,7 @@ while running:
             print(f"Dice 1: {dice_1}, Dice 2: {dice_2}, Total: {total}")
             print(f"Probability of rolling a total of {total}: {prob:.2%}")
             roll_data.append((dice_1, dice_2, total))
-        return roll_data, total
+        return roll_data
     def probability_of_total(n, sides=sides):
         if n < 2 or n > 2 * sides:
             return 0
@@ -30,4 +30,5 @@ while running:
     if cont == 'exit':
         running = False
 print("Rolling complete.")
-print(data) 
+for roll in data:
+    print(roll)
