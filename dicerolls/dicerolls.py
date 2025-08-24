@@ -30,4 +30,4 @@ while running:
     if cont == 'exit':
         running = False
 print("Rolling complete.")
-print(data)
+print(data) 
