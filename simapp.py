@@ -8,7 +8,7 @@ from matplotlib.backends.backend_tkagg import NavigationToolbar2Tk
 import seaborn as sns
 
 from coinflip.coinflip import CoinFlipSim
-
+from dicerolls.dicerolls import DiceRollSim
 
 root = tk.Tk()
 canvas = tk.Canvas(root, width=500, height=400)
@@ -48,6 +48,12 @@ class SimApp:
         coin_flip_tab = ttk.Frame(tab_control)
         tab_control.add(coin_flip_tab, text="Coin Flip")
         self.sims['coin_flip'] = CoinFlipSim(coin_flip_tab)
+
+        # Dice Rolls Tab 
+        dice_roll_tab = ttk.Frame(tab_control)
+        tab_control.add(dice_roll_tab, text="Dice Rolls")
+        self.sims['dice_rolls'] = DiceRollSim(dice_roll_tab)
+
 
 
 def main():
