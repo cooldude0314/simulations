@@ -6,6 +6,10 @@ from tkinter import ttk
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import NavigationToolbar2Tk
 import seaborn as sns
+
+from coinflip.coinflip import CoinFlipSim
+
+
 root = tk.Tk()
 canvas = tk.Canvas(root, width=500, height=400)
 canvas.pack()
@@ -19,7 +23,7 @@ class SimApp:
         self.root.title("Cool Dude Simulations Inc.")
 
         self.data = {} # dictionary to hang data results off
-        self.sim_tabs = {}
+        self.sims = {}
 
         # Configure style
         plt.style.use('seaborn-v0_8')
@@ -34,7 +38,6 @@ class SimApp:
 
                # Control Panel
         self.setup_controls(control_frame)
-        self.setup_coin_flip_tab(self.sim_tabs['coin_flip'])
 
     def setup_controls(self, frame):
         # Tabs for different simulations
@@ -44,27 +47,7 @@ class SimApp:
         # Coin Flip Tab
         coin_flip_tab = ttk.Frame(tab_control)
         tab_control.add(coin_flip_tab, text="Coin Flip")
-        self.sim_tabs['coin_flip'] = coin_flip_tab
-
-        # Dice Roll Tab
-        dice_roll_tab = ttk.Frame(tab_control)
-        tab_control.add(dice_roll_tab, text="Dice Roll")
-        self.sim_tabs['dice_roll'] = dice_roll_tab
-
-    def setup_coin_flip_tab(self, tab):
-        # Coin Flip Simulation UI
-        ttk.Label(tab, text="Coin Flip Simulation").pack(pady=10)
-        # Input for number of flips
-        ttk.Label(tab, text="Number of Flips:").pack(pady=5)
-        self.num_flips_entry = ttk.Entry(tab)
-        self.num_flips_entry.pack(pady=5)
-
-        def run_coin_flip_simulation():
-            num_flips = int(self.num_flips_entry.get())
-            flip_data = generate_coin_flip_data(num_flips)
-            self.data['coin_flip'] = flip_data
-
-        ttk.Button(tab, text="Run Simulation", command=run_coin_flip_simulation).pack(pady=5)
+        self.sims['coin_flip'] = CoinFlipSim(coin_flip_tab)
 
 
 def main():
