@@ -1,5 +1,8 @@
 import random
 
+import matplotlib.pyplot as plt
+from matplotlib.figure import Figure
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import tkinter as tk
 from tkinter import ttk
 
@@ -40,7 +43,26 @@ class DiceRollSim:
         self.render_results()
 
     def render_results(self):
-        print("implement me")
+        print("render")
+        # draw matplot histogram of dice totals
+        if not self.data:
+            return
+
+        totals = [total for _, _, total in self.data]
+        fig = Figure(figsize=(5, 4), dpi=100)
+        ax = fig.add_subplot()
+        ax.hist(totals)
+        print("hi")
+        ax.set_title("Dice Roll Totals")
+        ax.set_xlabel("Total")
+        ax.set_ylabel("Frequency")
+        #plt.hist(totals, bins=range(2, 2 * (int(self.sides_entry.get()) + 1)), edgecolor='black')
+        #+sns.histplot(totals, bins=range(2, 2 * (int(self.sides_entry.get()) + 1)), kde=False
+                     #).set(title="Dice Roll Totals", xlabel="Total", ylabel="Frequency")
+        canvas = FigureCanvasTkAgg(fig, master=self.tab)  # A tk.DrawingArea.
+        canvas.get_tk_widget().grid(row=1, column=0)
+        canvas.draw()
+        print("drawn")
 
 #sides = int(input("How many sides? "))
 #running = True
