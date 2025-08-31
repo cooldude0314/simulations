@@ -2,6 +2,7 @@ import random
 import tkinter as tk
 from tkinter import ttk
 import time
+import matplotlib.pyplot as plt
 root = tk.Tk()
 canvas = tk.Canvas(root, width=500, height=400)
 canvas.pack()
@@ -32,10 +33,30 @@ class CoinFlipSim:
 
         ttk.Button(tab, text="Run Simulation", command=run_coin_flip_simulation).pack(pady=5)
 
-    def render_results(self):
-        print("implement me!")
-        #if self.data:
-        # draws the histogram or whatever results
+    def render_results(self):       
+        if not self.data:
+           return
+        
+        x = []
+        y = []
+        heads_count = 0
+        for idx,data in enumerate(self.data):
+            x.append(idx + 1)
+            if data == "Heads":
+                heads_count += 1
+
+            y.append(float(heads_count)/(idx + 1))
+
+        plt.plot(x, y)
+        plt.ylim(0, 1)
+        plt.show()
+        # 1) create line graph plot
+        #    a) 
+        # 2) show plot on ttk
+
+        #draws the histogram or whatever results
+        # TODO
+        #  #1   
 
 
 #print("Starting up....")

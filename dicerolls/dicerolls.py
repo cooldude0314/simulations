@@ -48,7 +48,10 @@ class DiceRollSim:
         if not self.data:
             return
 
-        totals = [total for _, _, total in self.data]
+        totals = []
+        for item in self.data:
+            totals.append(item[2])
+
         fig = Figure(figsize=(5, 4), dpi=100)
         ax = fig.add_subplot()
         ax.hist(totals)

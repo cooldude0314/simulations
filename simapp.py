@@ -1,12 +1,11 @@
 import random
-import tkinter as tk
 import matplotlib.pyplot as plt
 import tkinter as tk
 from tkinter import ttk
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import NavigationToolbar2Tk
 import seaborn as sns
-
+import coinflip.coinflip
 from coinflip.coinflip import CoinFlipSim
 from dicerolls.dicerolls import DiceRollSim
 
@@ -14,8 +13,6 @@ root = tk.Tk()
 canvas = tk.Canvas(root, width=500, height=400)
 canvas.pack()
 
-def generate_coin_flip_data(num_flips):
-    return [1,2,3]
 
 class SimApp:
     def __init__(self, root):
