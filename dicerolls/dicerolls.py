@@ -43,7 +43,6 @@ class DiceRollSim:
         self.render_results()
 
     def render_results(self):
-        print("render")
         # draw matplot histogram of dice totals
         if not self.data:
             return
@@ -55,7 +54,6 @@ class DiceRollSim:
         fig = Figure(figsize=(5, 4), dpi=100)
         ax = fig.add_subplot()
         ax.hist(totals)
-        print("hi")
         ax.set_title("Dice Roll Totals")
         ax.set_xlabel("Total")
         ax.set_ylabel("Frequency")
@@ -65,7 +63,6 @@ class DiceRollSim:
         canvas = FigureCanvasTkAgg(fig, master=self.tab)  # A tk.DrawingArea.
         canvas.get_tk_widget().grid(row=1, column=0)
         canvas.draw()
-        print("drawn")
 
 #sides = int(input("How many sides? "))
 #running = True
