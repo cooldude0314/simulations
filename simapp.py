@@ -17,7 +17,7 @@ canvas.pack()
 class SimApp:
     def __init__(self, root):
         self.root = root
-        self.root.title("Cool Dude Simulations Inc.")
+        self.root.title("Sims Inc.")
 
         self.data = {} # dictionary to hang data results off
         self.sims = {}

@@ -39,24 +39,25 @@ class CoinFlipSim:
         
         x = []
         y = []
+        error = []
         heads_count = 0
+        total_dev = 0
         for idx,data in enumerate(self.data):
             x.append(idx + 1)
             if data == "Heads":
                 heads_count += 1
+            heads_prob = float(heads_count)/(idx + 1)
+            y.append(heads_prob)
 
-            y.append(float(heads_count)/(idx + 1))
+            dev = (heads_prob - 0.5) ** 2
+            total_dev += dev
+            error.append(total_dev)
 
-        plt.plot(x, y)
-        plt.ylim(0, 1)
+        # plt.plot(x, y)
+        # plt.ylim(0, 1)
+        # plt.show()
+        plt.plot(x,error)
         plt.show()
-        # 1) create line graph plot
-        #    a) 
-        # 2) show plot on ttk
-
-        #draws the histogram or whatever results
-        # TODO
-        #  #1   
 
 
 #print("Starting up....")
