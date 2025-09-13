@@ -3,9 +3,6 @@ import tkinter as tk
 from tkinter import ttk
 import time
 import matplotlib.pyplot as plt
-root = tk.Tk()
-canvas = tk.Canvas(root, width=500, height=400)
-canvas.pack()
 
 def generate_coin_flip_data(num_flips):
     return [random.choice(["Heads", "Tails"]) for _ in range(num_flips)]

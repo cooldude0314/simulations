@@ -9,15 +9,10 @@ import coinflip.coinflip
 from coinflip.coinflip import CoinFlipSim
 from dicerolls.dicerolls import DiceRollSim
 
-root = tk.Tk()
-canvas = tk.Canvas(root, width=500, height=400)
-canvas.pack()
-
-
-class SimApp:
-    def __init__(self, root):
-        self.root = root
-        self.root.title("Sims Inc.")
+class SimApp(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.title("Cool Dude Simulations Inc.")
 
         self.data = {} # dictionary to hang data results off
         self.sims = {}
@@ -30,7 +25,7 @@ class SimApp:
 
     def setup_ui(self):
         # Create main frame
-        control_frame = ttk.Frame(self.root, padding="10")
+        control_frame = ttk.Frame(self, padding="10")
         control_frame.pack(side=tk.TOP, fill=tk.X, padx=10, pady=5)
 
                # Control Panel
@@ -54,11 +49,9 @@ class SimApp:
 
 
 def main():
-    root = tk.Tk()
-    _ = SimApp(root)
-
     res_x = 1200
     res_y = 800
+    root = SimApp()
 
     # Center window on screen
     root.update_idletasks()
@@ -67,6 +60,7 @@ def main():
     root.geometry(f"{res_x}x{res_y}+{x}+{y}")
 
     root.mainloop()
+
 
 if __name__ == "__main__":
     main()
