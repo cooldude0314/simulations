@@ -21,11 +21,17 @@ class CoinFlipSim:
         ttk.Label(tab, text="Number of Flips:").pack(pady=5)
         self.num_flips_entry = ttk.Entry(tab)
         self.num_flips_entry.pack(pady=5)
+        ttk.Label(tab, text="Number of Runs:").pack(pady=5)
+        self.num_runs_entry = ttk.Entry(tab)
+        self.num_runs_entry.pack(pady=5)
 
         def run_coin_flip_simulation():
             num_flips = int(self.num_flips_entry.get())
-            flip_data = generate_coin_flip_data(num_flips)
-            self.data = flip_data
+            num_runs = int(self.num_runs_entry.get())
+            self.data = []
+            for _ in range(num_runs):
+                flip_data = generate_coin_flip_data(num_flips)
+                self.data.append(flip_data)
             self.render_results()
 
         ttk.Button(tab, text="Run Simulation", command=run_coin_flip_simulation).pack(pady=5)
@@ -34,27 +40,28 @@ class CoinFlipSim:
         if not self.data:
            return
         
-        x = []
-        y = []
-        error = []
-        heads_count = 0
-        total_dev = 0
-        for idx,data in enumerate(self.data):
-            x.append(idx + 1)
-            if data == "Heads":
-                heads_count += 1
-            heads_prob = float(heads_count)/(idx + 1)
-            y.append(heads_prob)
+        for fidx, flip_set in enumerate(self.data):
+            x = []
+            y = []
+            error = []
+            heads_count = 0
+            total_dev = 0
+            for idx, data in enumerate(flip_set):
+                x.append(idx + 1)
+                if data == "Heads":
+                    heads_count += 1
+                heads_prob = float(heads_count)/(idx + 1)
+                y.append(heads_prob)
 
-            dev = (heads_prob - 0.5) ** 2
-            total_dev += dev
-            error.append(total_dev)
+                dev = (heads_prob - 0.5) ** 2
+                total_dev += dev
+                error.append(total_dev)
 
-        # plt.plot(x, y)
-        # plt.ylim(0, 1)
-        # plt.show()
-        plt.plot(x,error)
+            plt.plot(x, y)
+        plt.ylim(0, 1)
+            # plt.plot(x,error)
         plt.show()
+        time.sleep(0.1)  # Pause to allow the plot to render
 
 
 #print("Starting up....")
